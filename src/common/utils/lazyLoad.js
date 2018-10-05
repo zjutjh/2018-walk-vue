@@ -1,0 +1,1 @@
+export default src => () => import(/* webpackChunkName: "about" */ src)
