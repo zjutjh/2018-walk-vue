@@ -6,6 +6,7 @@ import API from './api/index'
 import fetch from './middlewares/fetch'
 import './common/style/index.scss'
 import getValue from './common/utils/getValue'
+import './common/utils/rem'
 
 Vue.config.productionTip = false
 Vue.prototype.API = API

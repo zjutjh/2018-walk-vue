@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+.listcontainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.4rem;
+
+  table {
+    border-radius: .4rem;
+    background: #FFFFFF;
+
+    //background: rgba(255,255,255,0.80);
+
+
+
+    tr > .id {
+      width: 4.1rem;
+      text-align: center;
+    }
+
+    tr > .team-name {
+      width: 7.2rem;
+      text-align: left;
+      white-space: nowrap;
+      text-overflow:ellipsis;
+      overflow: hidden;
+
+    }
+
+    tr > .team-des {
+      width: 11rem;
+      text-align: left;
+      padding-left: .3rem;
+      text-align: left;
+      white-space: nowrap;
+      text-overflow:ellipsis;
+      overflow: hidden;
+    }
+
+    tr > .team-nums {
+      width: 4.7rem;
+      text-align: left;
+      white-space: nowrap;
+      text-overflow:ellipsis;
+      overflow: hidden;
+
+    }
+
+    tr > .team-apply {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .opearte-btn {
+        width: 4.9rem;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        font-size: 1rem;
+      }
+
+      .disable-btn {
+        color: #CCCCCC;
+      }
+    }
+    tr:nth-child(1) {
+      font-weight: bold;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: row;
+      height: 3.1rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666666;
+      line-height: 3.1rem;
+
+    }
+
+    tr:nth-child(even) {
+      background: rgba(242,158,149,0.11);
+    }
+
+
+  }
+}

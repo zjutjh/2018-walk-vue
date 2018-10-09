@@ -24,3 +24,14 @@ a,a:hover{color:#333;}
 * {
   box-sizing: border-box;
 }
+
+
+input {
+  background: none;
+  outline: none;
+  border: 0px;
+}
+
+input{outline:none;}
+
+input:focus { outline: none; }

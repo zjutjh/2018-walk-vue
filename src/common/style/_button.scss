@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.common-btn {
+  background-image: linear-gradient(0deg, #FF3F00 0%, rgba(249,68,17,0.44) 0%, #E65144 100%);
+  box-shadow: 2px 2px 0 0 #FFFFFF;
+  text-align: center;
+  font-weight: bold;
+  color: #FFFFFF;
+
+
+  .tip {
+    position: absolute;
+    text-align: right;
+    font-size: 1rem;
+    color: #FFFFFF;
+    right: 0;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    top:calc(100% + .4rem);
+  }
+}
+
+
+.message-btn {
+  border-radius: .2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  height: 7rem;
+  width: 3.1rem;
+  line-height: 7rem;
+}
+
+
+.opearte-btn {
+  background: #FFFFFF;
+  box-shadow: 0 .2rem .4rem 0 rgba(0,0,0,0.10);
+  border-radius: .2rem;
+  width: 4.9rem;
+  height: 2.4rem;
+  line-height: 2.4rem;
+  text-align: center;
+}

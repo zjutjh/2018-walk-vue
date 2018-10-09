@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+.member-list {
+  margin: 4.1rem 0;
+  background: rgba(255,255,255,0.80);
+  //padding: 0 1.6rem;
+  border-radius: .4rem .4rem 0 0;
+
+  .line {
+    //width: 32.2rem;
+    height: .1rem;
+    position: relative;
+  }
+
+  .head {
+    height: 2.7rem;
+    border-bottom: .5rem solid transparent;
+    padding: 0 1.6rem;
+
+    span {
+      line-height: 2.7rem;
+      font-size: 1.4rem;
+      color: #F58B75;
+      font-weight: bold;
+      display: inline-block;
+
+    }
+
+  }
+  .name {
+    width: 4.3rem;
+  }
+
+  .phone {
+    width: 9rem;
+  }
+
+  .campus {
+    width: 7.9rem;
+  }
+
+  .operate {
+    width: 4.9rem;
+  }
+
+
+  .content {
+    position: relative;
+    margin-top: .5rem;
+    padding: 0 1.6rem;
+    height: 4rem;
+    line-height: 4rem;
+    .is-captain {
+      position: absolute;
+      top: -30%;
+      left: 0;
+      img {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+    }
+    span {
+      line-height: 2.7rem;
+      font-size: 1.4rem;
+      color: #F58B75;
+      //font-weight: bold;
+      display: inline-block;
+
+    }
+
+    .btn {
+      height: 2.4rem;
+      line-height: 2.4rem;
+      font-size: 1rem;
+      color: #666666;
+    }
+  }
+
+
+}

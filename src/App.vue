@@ -1,13 +1,10 @@
 <template>
   <div id="app">
     <toast></toast>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <transition>
       <router-view/>
     </transition>
+
 
   </div>
 </template>
@@ -15,6 +12,7 @@
 
 <script>
   import Toast from './components/toast'
+  import { mapMutations, mapState, mapActions } from 'vuex'
 
   export default {
       name: 'App',
@@ -28,7 +26,7 @@
   html, body {
     height: 100%;
     width: 100%;
-    font-family: 'PingFang SC', Helvetica, Arial, sans-serif;
+    font-family: 'PingFang SC', Helvetica, Arial, sans-serif, '黑体';
   }
   #app {
     position: relative;

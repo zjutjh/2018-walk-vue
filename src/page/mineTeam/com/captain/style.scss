@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.captain {
+  display: flex;
+  flex-direction: column;
+  width: 32.2rem;
+
+  .team-apply {
+    width: 32.2rem;
+    height: 13.9rem;
+    border-radius: .8rem;
+    background: #FEF1EE;
+
+
+    .title {
+      height: 3.8rem;
+      line-height: 3.8rem;
+      background: #FEF1EE;
+      box-shadow: 0 .2rem .4rem 0 rgba(0,0,0,0.05);
+      border-radius: .8rem .8rem 0 0;
+      font-size: 1.4rem;
+      color: #F29984;
+      font-weight: bold;
+      padding-left: 1.7rem;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1.7rem;
+
+      .info {
+        font-size: 1.4rem;
+        height: 2rem;
+        line-height: 2rem;
+        color: #F29984;
+      }
+
+      .operate {
+        height: 3.1rem;
+        margin-top: 2.3rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        .btn {
+          margin-left: 2rem;
+          height: 3.1rem;
+          line-height: 3.1rem;
+          width: 7rem;
+          border-radius: .2rem .2rem .2rem .2rem;
+          font-size: 1.4rem;
+          color: #FFFFFF;
+          text-align: center;
+        }
+
+        .agree {
+          background: #B0D98E;
+        }
+
+        .refuse {
+          background: #D98E8E;
+        }
+
+
+      }
+
+    }
+  }
+  .team-btn {
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    width: 15.6rem;
+    height: 4.6rem;
+    line-height: 4.6rem;
+    font-size: 2rem;
+    color: #FFFFFF
+
+  }
+
+}
