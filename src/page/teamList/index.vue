@@ -91,7 +91,7 @@
         },
         computed: {
             totalPage: function(){
-                return Math.ceil(page.total / 15)
+                return Math.ceil(thos.page.total / 15)
             }
         }
     }
