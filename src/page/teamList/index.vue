@@ -11,7 +11,7 @@
         <list :list="page.data"></list>
         <div class="change-page">
             <div class="c-btn" @click="changePage(page.last_page_url)">上一页</div>
-            <div class="page-num">{{ page.current_page}}/{{ page.total}}</div>
+            <div class="page-num">{{ page.current_page}}/{{ totalPage}}</div>
             <div class="c-btn" @click="changePage(page.next_page_url)">下一页</div>
         </div>
         <div class="bk"></div>
@@ -90,7 +90,7 @@
             }
         },
         computed: {
-            totalPage: {
+            totalPage: function(){
                 return Math.ceil(page.total / 15)
             }
         }
