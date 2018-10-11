@@ -64,7 +64,7 @@ export const actions = {
             if (env === 'development') {
                 location.href = 'http://localhost:8000/oauth'
             } else {
-                location.href = 'https://boomerang.zhutianyu.top/oauth'
+                location.href = 'http://walk.zjutjh.com/oauth'
             }
 
             return

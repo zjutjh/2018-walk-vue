@@ -62,7 +62,7 @@
                 const params = {
                     'sid': this.sid,
                     'passwd': this.passwd,
-                    'identity': this.$route.query.type
+                    'identity': '学生'
                 }
 
                 const res = await this.fetch(this.API('stu'), {

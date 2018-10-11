@@ -21,7 +21,7 @@
         name: "index.vue",
         mounted: async function () {
             const _this = this
-            this.getIndexInfo(this)
+            await this.getIndexInfo(this)
             if (_this.finishTime) {
                 const time = setInterval(() => {
                     const tempTime = _this.finishTime - (new Date())
@@ -32,7 +32,7 @@
                     this.hour =  Math.floor(tempTime / 1000 / 60 /60 % 24)
                     this.minute = Math.floor(tempTime / 1000 / 60 % 60)
                 }, 1000)
-                this.updateTime(time)
+                await this.updateTime(time)
             }
 
         },

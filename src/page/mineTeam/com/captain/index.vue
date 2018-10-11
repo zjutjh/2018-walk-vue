@@ -58,18 +58,18 @@
             Message
         },
         created: async function() {
-            this.showLoading('')
-            this.getTeamLists()
-            this.getApplyLists()
+            await  this.showLoading('')
+            await  this.getTeamLists()
+            await this.getApplyLists()
             const res = await this.fetch(this.API('getTeamInfo'))
             if (res.code < 0) {
                 this.showToast(res.msg)
                 this.hideLoading('')
                 return
             }
-            this.showToast({title: res.msg, status: 'success'})
+            await this.showToast({title: res.msg, status: 'success'})
             this.isLock = res.data.is_lock
-            this.hideLoading('')
+            await this.hideLoading('')
         },
         data: () => ({
            members: [],

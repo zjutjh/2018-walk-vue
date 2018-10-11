@@ -4,7 +4,7 @@
 
         <div class="agreement">
             <input type="checkbox" id="agree" v-model="mz_agree">
-            <label for="agree">我已同意 </label><span @click="mz_show = false">《免责单》</span>
+            <label for="agree">我已同意 </label><span @click="mz_show = true">《免责单》</span>
         </div>
 
         <div class="common-btn login-btn" @click="login">微信登陆</div>

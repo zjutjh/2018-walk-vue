@@ -38,18 +38,21 @@
                 let search = window.location.search
 
                 if (search) {
-                    this.autologin(this)
+                    await this.autologin(this)
                 } else {
-                    this.login(this)
+                    await this.login(this)
                 }
             }
             this.hideLoading('')
 
         },
         mounted: async function() {
-            if (this.token && this.user) {
+            console.log(this.token)
+            console.log(this.user)
+            if (!this.token || !this.user) {
                 return
             }
+            console.log('login')
             this.login(this)
         },
         methods: {

@@ -55,13 +55,13 @@
                     this.showToast(res.msg)
                     return
                 }
-                this.showToast(res.msg)
+                this.showToast({title: res.msg, status: 'success'})
                 this.page = res.data
             },
             changePage: async function(url) {
-                this.showLoading('')
-                this.getPageInfo(url)
-                this.hideLoading('')
+                await this.showLoading('')
+                await this.getPageInfo(url)
+                await this.hideLoading('')
             },
             search: async function() {
                 if (!this.query_string) {
@@ -87,6 +87,11 @@
                 this.query_string = ''
                 this.page = res.data
 
+            }
+        },
+        computed: {
+            totalPage: {
+                return Math.ceil(page.total / 15)
             }
         }
     }

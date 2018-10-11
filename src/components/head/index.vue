@@ -4,7 +4,7 @@
             <div class="head-title">精弘毅行</div>
             <div class="head-logos">
                 <img src="./img/jh-logo.png" alt="">
-                <img src="../../assets/jhlogo.png"  alt="">
+                <img src="../../../public/jhlogo.png" alt="">
                 <img src="./img/beifeng.png" alt="">
             </div>
         </header>

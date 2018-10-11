@@ -30,7 +30,7 @@
             Message
         },
         created: async function() {
-          this.getTeamLists()
+            await this.getTeamLists()
         },
         data: () => ({
             leavelShow: false,

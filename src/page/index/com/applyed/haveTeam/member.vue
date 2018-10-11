@@ -17,9 +17,9 @@
     export default {
         name: "member",
         created: async function () {
-            this.showLoading('请稍等')
-            this.getTeam()
-            this.hideLoading('')
+            await  this.showLoading('请稍等')
+            await  this.getTeam()
+            await  this.hideLoading('')
 
         },
         data: () => ({

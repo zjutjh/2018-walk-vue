@@ -15,7 +15,7 @@
     export default {
         name: "index",
         created: async function() {
-          this.getApplyTeam()
+          await this.getApplyTeam()
         },
         data: () => ({
             team: {
@@ -23,6 +23,7 @@
             }
         }),
         methods: {
+            ...mapActions('login'),
             ...mapMutations([
                 'showToast'
             ]),
@@ -32,8 +33,10 @@
                     this.showToast(res.msg)
                     return
                 }
-                this.showToast(res.msg)
+                await this.showToast({title: res.msg, status: 'success'})
+
                 this.$router.replace('/')
+                await this.login(this)
             },
             getApplyTeam: async function() {
                 const res = await this.fetch(this.API('getApplyTeam'))

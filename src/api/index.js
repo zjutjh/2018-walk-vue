@@ -4,7 +4,7 @@ const host = process.env.DEV_HOST || 'localhost'
 const devPort = process.env.DEV_PORT || '8000'
 const devUrl = `http://${host}:${devPort}`
 
-const serverUrl = 'http://example.com'
+const serverUrl = 'http://walk.zjutjh.com'
 
 /**
  * get API url by API name

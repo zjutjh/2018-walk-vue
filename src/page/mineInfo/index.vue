@@ -58,7 +58,7 @@
         created: async function() {
           if (this.$route.query.type !== 'create') {
               this.btn = '保存更新'
-              this.getMineInfo()
+              await  this.getMineInfo()
           }
         },
         data: () => ({

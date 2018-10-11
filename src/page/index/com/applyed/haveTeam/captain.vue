@@ -17,10 +17,10 @@
     export default {
         name: "index",
         created: async function () {
-            this.showLoading('请稍等')
-            this.getApplyCount()
-            this.getTeam()
-            this.hideLoading('')
+            await this.showLoading('请稍等')
+            await this.getApplyCount()
+            await this.getTeam()
+            await this.hideLoading('')
 
         },
         data: () => ({
@@ -33,7 +33,7 @@
             getTeam: async function () {
                 const res = await this.fetch(this.API('getTeamInfo'))
                 if (res.code < 0) {
-                    this.showToast(res.msg)
+                    this.showToast({title: res.msg, status: 'success'})
                     return
                 }
                 this.showToast(res.msg)
@@ -58,7 +58,6 @@
 
             },
             goMineTeam: function () {
-                console.log('test')
                 this.$router.push({name: 'captainTeam'})
             }
         }
