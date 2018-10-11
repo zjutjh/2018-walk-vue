@@ -11,6 +11,7 @@
                     class="operate"><div class="opearte-btn btn" @click="showMes(index)" :class="{'dis': index === 0 && captain}"> {{ captain ? '点击操作' : '点击查看'}}</div></span>
                 <message :title="'对 ' + item.name + ' (' + item.campus + ') 进行操作'" :show="show[index]" @cancel="show.splice(index, 1, false)">
                     <h1>额外信息</h1>
+                    <p>姓名 <span>{{ item.name}}</span></p>
                     <p>微信 <span>{{item.wx_id}}</span> </p>
                     <p>QQ <span>{{ item.qq}}</span></p>
                     <p>身份 <span>{{ item.identity}}</span></p>

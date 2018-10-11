@@ -34,8 +34,6 @@
                 <div class="common-btn create-btn" @click="createOrpUpdate">{{ type === 'create' ? '创建队伍' :'更新信息'}}</div>
             </div>
 
-
-
             <div class="bk"></div>
         </div>
     </div>
@@ -54,10 +52,11 @@
                 description: '',
                 start_campus: '屏峰',
                 num: '4',
-                select_route: '全程'
+                select_route: '半程'
 
             },
-            type: 'update'
+            type: 'update',
+            state: false
         }),
         created: async function() {
             if (this.$route.query.type !== 'create') {
@@ -87,6 +86,10 @@
 
             },
             createOrpUpdate: async function() {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 if (!this.isEmpty()) {
                     return
                 }
@@ -98,10 +101,12 @@
                 })
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
                 this.showToast({titel: res.msg, status: 'success'})
                 this.$router.replace('/')
+                this.state = false
             },
             getTeamInfo: async function() {
                 const res = await this.fetch(this.API('getTeamInfo'))

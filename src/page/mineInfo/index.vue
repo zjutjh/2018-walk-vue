@@ -18,14 +18,14 @@
                     <label for="">手机号</label><input type="text" placeholder="请输入手机号" v-model="form.phone">
                     <div class="tip">手机号用于组员间的联系，请务必填写正确</div>
                 </div>
-                <div class="item">
+                <div class="item" v-if="isCreate">
                     <label for="">身份证号码</label><input type="text" placeholder="请输入身份证号码" v-model="form.id_card">
                     <div class="tip">身份证号会用于活动开始前的身份验证</div>
                 </div>
-                <div class="item">
+                <div class="item" v-if="isCreate">
                     <label for="">重复身份证号码</label><input type="text" placeholder="请再次输入身份证号码" v-model="second_id_card">
                 </div>
-                <div class="item">
+                <div class="item" v-if="isCreate">
                     <label for="">身高</label><input type="text" placeholder="请输入身高 例如：170" v-model="form.height">
                 </div>
                 <div class="item">
@@ -59,7 +59,9 @@
           if (this.$route.query.type !== 'create') {
               this.btn = '保存更新'
               await  this.getMineInfo()
+              return
           }
+          this.isCreate = true
         },
         data: () => ({
            form: {
@@ -74,6 +76,8 @@
            },
             second_id_card:'',
             btn: '保存修改',
+            isCreate: false,
+            state: false
 
         }),
         methods: {
@@ -90,6 +94,15 @@
                     this.showToast('手机号不能为空')
                     return false
                 }
+
+                if (!this.form.email) {
+                    this.showToast('邮箱不能为空')
+                    return false
+                }
+
+                if (!this.isCreate) {
+                    return true
+                }
                 if (!this.form.id_card || !this.second_id_card) {
                     this.showToast('身份证不能为空')
                     return false
@@ -98,13 +111,15 @@
                     this.showToast('身高不能为空')
                     return false
                 }
-                if (!this.form.email) {
-                    this.showToast('邮箱不能为空')
-                    return false
-                }
+
                 return true
             },
             save: async function () {
+                if (this.state) {
+                    return
+                }
+
+                this.state = true
                 if (!this.isEmpty()) {
                     return
                 }
@@ -112,20 +127,42 @@
                 if (!this.verify()) {
                     return
                 }
-                if (this.second_id_card !== this.form.id_card) {
-                    show.showToast('身份证号码不一致')
-                    return
+
+                if (this.isCreate) {
+                    if (this.second_id_card !== this.form.id_card) {
+                        show.showToast('身份证号码不一致')
+                        return
+                    }
                 }
 
-                const params = this.form
+
+                let params = {}
+
+                if (this.isCreate) {
+                    params = {...this.form, type: 'create'}
+                } else {
+                    params = {
+                        campus: this.form.campus,
+                        name: this.form.name,
+                        email: this.form.email,
+                        phone: this.form.phone,
+                        wx_id: this.form.wx_id,
+                        qq: this.form.wx_id,
+                        type: 'update'
+                    }
+                }
                 const res = await this.fetch(this.API('detail'), {
                     data: params,
                     method: 'post'
                 })
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
+
+                this.showToast({title: res.msg, status: 'success'})
+                this.state = true
 
                 this.$router.replace('/')
 
@@ -140,6 +177,10 @@
                 if (!/1[0-9]{10}/.test(this.form.phone)) {
                     this.showToast('手机号格式不正确')
                     return false
+                }
+
+                if (!this.isCreate) {
+                    return true
                 }
 
                 if (!/[0-9]{17}([0-9Xx])/.test(this.form.id_card)) {

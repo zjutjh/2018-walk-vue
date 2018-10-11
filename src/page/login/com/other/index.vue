@@ -40,9 +40,14 @@
             mz_title: '免责单',
             mz_show: true,
             mz_agree: false,
+            state: false
         }),
         methods: {
             login: async function() {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 if (!this.mz_agree) {
                     this.showToast('需要同意免责单')
                     return
@@ -59,11 +64,17 @@
 
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
 
                 this.showToast({title: res.msg, status: 'success'})
-                this.$router.replace({name: 'mineInfo', query: { type: 'create'}})
+                this.state = false
+                if (this.$route.query.change !== 'change') {
+                    this.$router.replace({name: 'mineInfo', query: { type: 'create'}})
+                    return
+                }
+                this.$router.replace('/')
             },
             ...mapMutations([
                 'showToast'

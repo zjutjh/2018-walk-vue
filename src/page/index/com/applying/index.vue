@@ -20,20 +20,29 @@
         data: () => ({
             team: {
                 name: ''
-            }
+            },
+            state: false
         }),
         methods: {
-            ...mapActions('login'),
+            ...mapActions([
+                'login'
+            ]),
             ...mapMutations([
                 'showToast'
             ]),
             deleteApply: async function() {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 const  res = await this.fetch(this.API('applyDelete'))
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
                 await this.showToast({title: res.msg, status: 'success'})
+                this.state = false
 
                 this.$router.replace('/')
                 await this.login(this)

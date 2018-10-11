@@ -48,7 +48,8 @@
             this.init()
         },
         data: () => ({
-            show: []
+            show: [],
+            state: false
         }),
         watch: {
           list: function(after, bofore) {
@@ -69,6 +70,10 @@
                 return false
             },
             apply: async function(item) {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 if (this.disable(item)) {
                     return
                 }
@@ -83,10 +88,12 @@
                 })
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
 
                 this.showToast({title: res.msg, status: 'success'})
+                this.state = false
                 this.$router.replace('/')
             },
             ...mapMutations([

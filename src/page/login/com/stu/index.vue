@@ -45,10 +45,16 @@
             mz_title: '免责单',
             sid: '',
             passwd: '',
-            mz_agree: false
+            mz_agree: false,
+            state: false
         }),
         methods: {
             login: async function() {
+                if (this.state) {
+                    return
+                }
+
+                this.state = true
                 if (!this.sid || !this.sid) {
                     this.showToast('帐号或密码不能为空')
                     return
@@ -72,11 +78,18 @@
 
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
 
                 this.showToast({title: res.msg, status: 'success'})
-                this.$router.replace({name: 'mineInfo', query: { type: 'create'}})
+                this.state = false
+                if (this.$route.query.change !== 'change') {
+                    this.$router.replace({name: 'mineInfo', query: { type: 'create'}})
+                    return
+                }
+                this.$router.replace('/')
+
             },
             ...mapMutations([
                 'showToast'

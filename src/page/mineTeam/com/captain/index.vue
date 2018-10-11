@@ -77,7 +77,8 @@
            lockShow: false,
            unlockShow: false,
            breakShow: false,
-           isLock: true
+           isLock: true,
+            state: false
         }),
         methods: {
             ...mapMutations([
@@ -109,6 +110,11 @@
 
             },
             agree: async function(item) {
+                if (this.state) {
+                    return
+                }
+                this.state = true
+
                 const params = {
                     apply_id: item.id
                 }
@@ -119,13 +125,20 @@
 
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
                 this.showToast({title: res.msg, status: 'success'})
+                this.state = false
                 this.getTeamLists()
                 this.getApplyLists()
             },
             refuse: async function(item) {
+                if (this.state) {
+                    return
+                }
+                this.state = true
+
                 const params = {
                     apply_id: item.id
                 }
@@ -136,31 +149,45 @@
 
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
                 this.showToast({title: res.msg, status: 'success'})
+                this.state = false
                 this.getTeamLists()
                 this.getApplyLists()
             },
             lockTeam: async function() {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 const res = await this.fetch(this.API('lock'))
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state= false
                     return
                 }
                 this.showToast({title: res.msg, status: 'success'})
+                this.state = false
                 this.lockShow = false
                 this.isLock = true
 
 
             },
             unlockTeam: async function() {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 const res = await this.fetch(this.API('unlock'))
                 if (res.code < 0) {
+                    this.state = false
                     this.showToast(res.msg)
                     return
                 }
                 this.showToast({title: res.msg, status: 'success'})
+                this.state = false
                 this.unlockShow = false
                 this.isLock = false
             },
@@ -173,12 +200,18 @@
 
             },
             breakTeam: async function() {
+                if (this.state) {
+                    return
+                }
+                this.state = true
                 const res = await this.fetch(this.API('break'))
                 if (res.code < 0) {
                     this.showToast(res.msg)
+                    this.state = false
                     return
                 }
                 this.showToast({title: res.msg, status: 'success'})
+                this.state = false
                 this.breakShow = false
                 this.$router.replace('/')
             }

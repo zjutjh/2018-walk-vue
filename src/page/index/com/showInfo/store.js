@@ -33,7 +33,7 @@ export const mutations = {
     updateNums: (state, payload) => {
         state.teamNums = payload.teamNums
         state.userNums = payload.userNums
-        state.finishTime = new Date(payload.finishTime)
+        state.finishTime = new Date(payload.finishTime.replace(/\-/g, "/"))
     },
     deleteTime: (state, payload) => {
         clearInterval(state.time)

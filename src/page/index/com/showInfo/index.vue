@@ -1,7 +1,7 @@
 <template>
     <div class="show-container">
         <div class="show-title">距离结束报名还有</div>
-        <div class="show-time">{{ day}}天{{hour}}小时{{minute}}分钟</div>
+        <div class="show-time">{{ day}}天{{hour}}小时{{minute}}分钟{{second}}秒</div>
         <div class="foot-nums">
             <div class="item">
                 <p class="title">队伍数</p>
@@ -31,6 +31,7 @@
                     this.day = Math.floor( tempTime/ 1000 / 24 / 60 / 60)
                     this.hour =  Math.floor(tempTime / 1000 / 60 /60 % 24)
                     this.minute = Math.floor(tempTime / 1000 / 60 % 60)
+                    this.second = Math.floor(tempTime / 1000 % 60)
                 }, 1000)
                 await this.updateTime(time)
             }
@@ -39,7 +40,8 @@
         data: () => ({
             day: 0,
             hour: 0,
-            minute: 0
+            minute: 0,
+            second: 0
 
         }),
         methods: {

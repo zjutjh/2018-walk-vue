@@ -38,19 +38,24 @@
             YxHead
         },
         methods: {
-            test: function(e) {
-                console.log(e)
+
+        },
+        created: async function() {
+            if (this.$route.query.change !== 'change') {
+                return
             }
+            this.change = this.$route.query.change
         },
         data:() => ({
-            type: '学生'
+            type: '学生',
+            change: ''
         }),
         watch: {
             type: function (new_type, old_type) {
                 if (new_type === '学生') {
-                    this.$router.replace({path: '/login', query: {type: new_type}})
+                    this.$router.replace({path: '/login', query: {type: new_type, change: this.change}})
                 } else {
-                    this.$router.replace({name: 'other', query: {type: new_type}})
+                    this.$router.replace({name: 'other', query: {type: new_type, change: this.change}})
                 }
             }
         }

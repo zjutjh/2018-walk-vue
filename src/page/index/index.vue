@@ -86,6 +86,9 @@
                         case state.HAVETEAMISMEMBER:
                             this.$router.replace({name: 'member'});
                             break
+                        case state.NOTDETAIL:
+                            this.$router.replace({name: 'mineInfo', query: { type: 'create'}});
+                            break
                         default:
                             this.login(this)
                     }

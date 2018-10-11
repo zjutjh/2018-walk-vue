@@ -2,6 +2,8 @@
     <div class="index-m">
         <div class="index-btn common-btn" @click="goMineTeam">我的队伍</div>
         <div class="index-btn common-btn" @click="goMineInfo">修改个人信息</div>
+        <div class="index-btn common-btn" v-if="user.campus !== '学生'" @click="goChange">切换身份</div>
+
         <div class="team-info">
             <span class="team-label">队伍</span>
             <p class="team-name">{{ team.name}}</p>
@@ -47,7 +49,16 @@
             },
             goMineTeam: function () {
                 this.$router.push({name: 'memberTeam'})
+            },
+            goChange: function() {
+                this.$router.push({path: '/login', query: {change: 'change'}})
             }
+        },
+        computed: {
+            ...mapState({
+                user: (state) => state.auth.userInfo,
+                token: (state) => state.auth.token
+            })
         }
     }
 </script>
