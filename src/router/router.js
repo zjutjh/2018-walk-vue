@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(Router)
 
@@ -9,30 +8,30 @@ export default new Router({
         {
             path: '/',
             name: 'index',
-            component: () => import('../page/index/index.vue'),
+            component: () => import('../page/index'),
             children: [
                 {
-                    path: '/',
+                    path: '/index',
                     name: 'notApply',
                     component: () => import('../page/index/com/notApply/index.vue')
                 },
                 {
-                    path: '/applying',
+                    path: 'applying',
                     name: 'applying',
                     component: () => import('../page/index/com/applying/index.vue')
                 },
                 {
-                    path: '/applyed/notHaveTeam',
+                    path: 'applyed/notHaveTeam',
                     name: 'notHaveTeam',
                     component: () => import('../page/index/com/applyed/notHaveTeam/index.vue')
                 },
                 {
-                    path: '/applyed/haveTeam/captain',
+                    path: 'applyed/haveTeam/captain',
                     name: 'captain',
                     component: () => import('../page/index/com/applyed/haveTeam/captain.vue')
                 },
                 {
-                    path: '/applyed/haveTeam/member',
+                    path: 'applyed/haveTeam/member',
                     name: 'member',
                     component: () => import('../page/index/com/applyed/haveTeam/member.vue')
                 }
@@ -80,24 +79,24 @@ export default new Router({
             children: [
                 {
                     path: 'captain',
-                    name: 'captain',
+                    name: 'captainTeam',
                     component: () => import('../page/mineTeam/com/captain')
                 },
                 {
                     path: 'member',
-                    name: 'member',
+                    name: 'memberTeam',
                     component: () => import('../page/mineTeam/com/member')
                 }
 
             ]
         },
         {
-            path: '/about',
-            name: 'about',
+            path: '/finish',
+            name: 'finish',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import('../views/About.vue')
+            component: () => import('../page/finish/index.vue')
         }, {
             path: '/test',
             name: 'test',

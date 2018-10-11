@@ -7,11 +7,16 @@ import fetch from './middlewares/fetch'
 import './common/style/index.scss'
 import getValue from './common/utils/getValue'
 import './common/utils/rem'
+import * as cookie from './common/utils/cookie'
+import * as state from './common/utils/constant'
 
 Vue.config.productionTip = false
 Vue.prototype.API = API
 Vue.prototype.fetch = fetch
 Vue.prototype.getValue = getValue
+Vue.prototype.cookie = cookie
+Vue.prototype.state = state
+
 
 new Vue({
   router,

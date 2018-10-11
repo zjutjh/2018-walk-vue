@@ -1,14 +1,18 @@
 <template>
     <div class="index-m">
-        <div class="index-btn common-btn">创建队伍</div>
-        <div class="index-btn common-btn">寻找队伍</div>
-        <div class="index-btn common-btn">修改个人信息</div>
+        <div class="index-btn common-btn" @click="goLogin">立即报名</div>
+
     </div>
 </template>
 
 <script>
     export default {
-        name: "index"
+        name: "index",
+        methods: {
+            goLogin: function () {
+                this.$router.push('/login')
+            }
+        }
     }
 </script>
 

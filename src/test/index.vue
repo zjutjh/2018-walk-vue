@@ -1,16 +1,27 @@
 <template>
     <div class="test-container">
-        <test></test>
+        <message :title="'申请队伍'" :show="true">
+            <h1>队伍信息</h1>
+            <p>名称 <span>sdgdfg</span> </p>
+            <p>简介 <span>sdfg</span></p>
+            <p>人数 <span>sdfgdsfg</span></p>
+
+            <div class="btn-content">
+                <div class="btn success">申请</div>
+            </div>
+
+        </message>
     </div>
 </template>
 
 <script>
     import Test from '../components/head'
+    import Message from '../components/message'
 
     export default {
         name: "index",
         components: {
-            Test
+            Message
         }
     }
 </script>

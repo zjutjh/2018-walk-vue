@@ -4,7 +4,7 @@
             <div class="message-cnt">
                 <div class="message-head">
                     <div class="title">{{ title }}</div>
-                    <div class="cancel" @click="show = false"></div>
+                    <div class="cancel" @click="cancel"></div>
                 </div>
                 <div class="content">
                     <slot></slot>
@@ -18,7 +18,12 @@
 <script>
     export default {
         name: "index",
-        props: ['title', 'show']
+        props: ['title', 'show'],
+        methods: {
+            cancel: function() {
+                this.$emit('cancel')
+            }
+        }
     }
 </script>
 

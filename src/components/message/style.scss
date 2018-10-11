@@ -60,12 +60,15 @@
     .content {
       min-height: 18.1rem;
       padding: 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
 
 
 
       h1 {
         text-align: left;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        font-weight: bold;
         color: #BD7A6E;
       }
 
@@ -75,6 +78,7 @@
         font-size: 1.2rem;
         color:  #5A5875;
         line-height: 1.7rem;
+        margin-top: .5rem;
 
         span {
           display: flex;
@@ -85,6 +89,28 @@
           width: 3.4rem;
 
         }
+      }
+
+      .btn-content {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      .btn {
+        height: 3.1rem;
+        line-height: 3.1rem;
+        text-align: center;
+        width: 7rem;
+        border-radius: .2rem;
+        font-size: 1.4rem;
+        color: #FFFFFF;
+        margin-top: 2.9rem;
+      }
+
+      .success {
+        background: #B0D98E;
+      }
+      .fail {
+        background: #D98E8E;
       }
 
       .content-margin {

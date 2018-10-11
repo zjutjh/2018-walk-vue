@@ -5,14 +5,17 @@
             <div class="user-type-radio">
                 <div class="radio-item">
 
-                    <input type="radio" name="user-type" id="stu" @change="test"><label for="stu" >我是学生</label>
+                    <input type="radio" name="user-type" id="stu" v-model="type" value="学生"><label for="stu" >我是学生</label>
                 </div>
                 <div class="radio-item">
 
-                    <input type="radio" name="user-type" id="teacher"> <label for="teacher">我是老师</label>
+                    <input type="radio" name="user-type" id="teacher" v-model="type" value="教职工"> <label for="teacher">我是教职工</label>
                 </div>
                 <div class="radio-item">
-                    <input type="radio" name="user-type" id="other"> <label for="other">我是校友/社会人士</label>
+                    <input type="radio" name="user-type" id="school" v-model="type" value="校友" > <label for="school">我是校友</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" name="user-type" id="other" v-model="type" value="其他"> <label for="other">我是其他</label>
                 </div>
             </div>
 
@@ -38,6 +41,18 @@
             test: function(e) {
                 console.log(e)
             }
+        },
+        data:() => ({
+            type: '学生'
+        }),
+        watch: {
+            type: function (new_type, old_type) {
+                if (new_type === '学生') {
+                    this.$router.replace({path: '/login', query: {type: new_type}})
+                } else {
+                    this.$router.replace({name: 'other', query: {type: new_type}})
+                }
+            }
         }
     }
 </script>
@@ -46,11 +61,22 @@
     @import "style";
 
 
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-    .fade-enter, .fade-leave-active {
-        opacity: 0
-    }
+    /*.fade-enter-active, .fade-leave-active {*/
+        /*transition: opacity .5s*/
+    /*}*/
+    /*.fade-enter, .fade-leave-active {*/
+        /*opacity: 0*/
+    /*}*/
 
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active for below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
 </style>

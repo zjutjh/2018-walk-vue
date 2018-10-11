@@ -60,13 +60,12 @@
       }
 
     }
-    span {
+    >span {
       line-height: 2.7rem;
       font-size: 1.4rem;
       color: #F58B75;
       //font-weight: bold;
       display: inline-block;
-
     }
 
     .btn {
@@ -74,6 +73,10 @@
       line-height: 2.4rem;
       font-size: 1rem;
       color: #666666;
+    }
+
+    .dis {
+      color: #CCCCCC;
     }
   }
 

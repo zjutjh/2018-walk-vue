@@ -28,7 +28,21 @@
       padding: 0 1.59rem;
     }
 
+    input[type="password"] {
+      flex: 65;
+      font-size: 1.4rem;
+      height: 3.9rem;
+      min-height: 3.9rem;
+      color: #666666;
+      line-height: 3.9rem;
+      padding: 0 1.59rem;
+    }
+
     input[type="text"]::placeholder {
+      color: #ACACAC;
+    }
+
+    input[type="password"]::placeholder {
       color: #ACACAC;
     }
 

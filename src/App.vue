@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <toast></toast>
-    <transition>
+    <keep-alive>
+    <transition name="fade">
       <router-view/>
     </transition>
+    </keep-alive>
 
 
   </div>
@@ -18,6 +20,16 @@
       name: 'App',
       components: {
           Toast
+      },
+      created: async function() {
+          const res = await this.fetch(this.API('verifyApplyEnd'))
+
+          if (res.code < 0) {
+              return
+          }
+
+          this.$router.replace('/finish')
+
       }
   }
 </script>
@@ -55,5 +67,17 @@
       margin: 0 auto;
       max-width: 560px;
     }
+  }
+
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
   }
 </style>

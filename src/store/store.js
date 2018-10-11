@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as auth from './auth'
 import * as toast from './toast'
+import * as show from '../page/index/com/showInfo/store'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     env,
     modules: {
         auth,
-        toast
+        toast,
+        show
 
     }
 })

@@ -21,19 +21,54 @@
     margin-top: 2.2rem;
 
     input[type="checkbox"] + label  {
+      position: relative;
       font-size: 1.2rem;
       color: #FFFFFF;
       height: 1.7rem;
       line-height: 1.7rem;
       margin-left: 2rem;
 
-      span {
-        font-size: 1.2rem;
-        height: 1.7rem;
-        line-height: 1.7rem;
-        color: #B4D9FC;
-      }
+    }
 
+    input[type="checkbox"] + label::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1.4rem;
+      width: 1.4rem;
+      border-radius: .4rem;
+      background: #FFFFFF;
+      left: -1.4rem - .6rem;
+
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    input[type="checkbox"]:checked + label::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1.4rem;
+      width: 1.4rem;
+      border-radius: .4rem;
+      top: .1rem;
+      left: -1.4rem - 0.5rem;
+      background: url("../img/download.png") no-repeat;
+      background-size: cover;
+      background-color: transparent;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+
+
+    span {
+      font-size: 1.2rem;
+      height: 1.7rem;
+      line-height: 1.7rem;
+      color: #B4D9FC;
     }
   }
 
