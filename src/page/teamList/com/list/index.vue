@@ -63,7 +63,6 @@
                 }
 
                 if (item.is_lock) {
-
                     return true
                 }
 
@@ -75,6 +74,7 @@
                 }
                 this.state = true
                 if (this.disable(item)) {
+                    this.state = false
                     return
                 }
 

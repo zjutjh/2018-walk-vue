@@ -2,9 +2,9 @@
     <div class="index-m">
         <div class="index-btn common-btn" @click="goMineTeam">我的队伍<span class="tip">{{ count}}</span></div>
         <div class="index-btn common-btn" @click="goMineInfo">修改个人信息</div>
-        <div class="index-btn common-btn" v-if="user.campus !== '学生'" @click="goChange">切换身份</div>
+        <div class="index-btn common-btn" v-if="user.identity !== '学生'" @click="goChange">切换身份</div>
         <div class="team-info">
-            <span class="team-label">队伍</span>
+            <span class="team-label">队伍:{{team.id}}</span>
             <p class="team-name">{{ team.name}}</p>
 
         </div>

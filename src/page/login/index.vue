@@ -1,6 +1,15 @@
 <template>
     <div class="login-container">
         <yx-head></yx-head>
+        <message :title="'报名须知'" :show="show" @cancel="show = false">
+            <p>天气渐凉，又到了每年精弘毅行的季节了，</p>
+            <p>叶子一片片飞舞而下，</p>
+            <p>某一处山脉又将迎来熙熙攘攘的毅行人潮。</p>
+            <p>这是一场盛大的相遇，</p>
+            <p>也是精弘毅行与人一年一度不约而至的相遇，</p>
+            <p>是不可辜负的好时光。</p>
+
+        </message>
         <div class="login-content">
             <div class="user-type-radio">
                 <div class="radio-item">
@@ -19,9 +28,9 @@
                 </div>
             </div>
 
-            <transition name="fade">
+
                 <router-view/>
-            </transition>
+
 
             <div class="bk"></div>
 
@@ -31,11 +40,13 @@
 </template>
 
 <script>
+    import Message from '../../components/message'
     import YxHead from '../../components/head'
     export default {
         name: "index",
         components: {
-            YxHead
+            YxHead,
+            Message
         },
         methods: {
 
@@ -48,7 +59,8 @@
         },
         data:() => ({
             type: '学生',
-            change: ''
+            change: '',
+            show: true
         }),
         watch: {
             type: function (new_type, old_type) {
@@ -74,14 +86,19 @@
     /*}*/
 
     .slide-fade-enter-active {
-        transition: all .3s ease;
+        transition: all 1s ease;
     }
     .slide-fade-leave-active {
+
+
         transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
     .slide-fade-enter, .slide-fade-leave-to
+
         /* .slide-fade-leave-active for below version 2.1.8 */ {
         transform: translateX(10px);
+        position: absolute;
+        left: -100%;
         opacity: 0;
     }
 </style>

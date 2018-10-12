@@ -98,9 +98,9 @@ export default new Router({
             // which is lazy-loaded when the route is visited.
             component: () => import('../page/finish/index.vue')
         }, {
-            path: '/test',
-            name: 'test',
-            component: () => import('../test/index.vue')
+            path: '/dis',
+            name: 'di',
+            component: () => import('../page/disclaimer')
         }
     ]
 })

@@ -10,7 +10,7 @@
         name: "index",
         methods: {
             goLogin: function () {
-                this.$router.push('/login')
+                this.$router.push('/dis')
             }
         }
     }

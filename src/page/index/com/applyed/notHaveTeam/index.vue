@@ -4,7 +4,7 @@
         <div class="index-btn common-btn" @click="toCreate">创建队伍</div>
         <div class="index-btn common-btn" @click="toFindTeam">寻找队伍</div>
         <div class="index-btn common-btn" @click="toUpdateMineInfo">修改个人信息</div>
-        <div class="index-btn common-btn" v-if="user.campus !== '学生'" @click="goChange">切换身份</div>
+        <div class="index-btn common-btn" v-if="user.identity !== '学生'" @click="goChange">切换身份</div>
     </div>
 </template>
 

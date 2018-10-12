@@ -10,8 +10,8 @@
                     <label for="">队伍简介</label><input v-model="form.description" type="text" placeholder="请输入队伍简介">
                 </div>
                 <div class="item touch">
-                    <label for=""  v-model="form.num">最大人数</label>
-                    <select class="h">
+                    <label for=""  >最大人数</label>
+                    <select class="h" v-model="form.num">
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
@@ -74,7 +74,7 @@
             },
             isEmpty: function() {
                 if (!this.form.name) {
-                    this.showToast('姓名不能为空')
+                    this.showToast('名称不能为空')
                     return false
                 }
                 if (!this.form.description) {
@@ -91,22 +91,32 @@
                 }
                 this.state = true
                 if (!this.isEmpty()) {
+                    this.state = false
                     return
                 }
 
+                this.showLoading('')
                 const params = this.form
                 const res = await this.fetch(this.API(this.type), {
                     data: params,
                     method: 'post'
                 })
                 if (res.code < 0) {
+                    this.hideLoading('')
                     this.showToast(res.msg)
                     this.state = false
+
                     return
                 }
+                this.hideLoading('')
                 this.showToast({titel: res.msg, status: 'success'})
-                this.$router.replace('/')
                 this.state = false
+                if (this.$route.query.type !== 'create') {
+                    this.$router.replace({name: 'captainTeam'})
+                    return
+                }
+                this.$router.replace('/')
+
             },
             getTeamInfo: async function() {
                 const res = await this.fetch(this.API('getTeamInfo'))
@@ -123,7 +133,9 @@
 
             },
             ...mapMutations([
-                'showToast'
+                'showToast',
+                'showLoading',
+                'hideLoading'
             ])
         }
     }

@@ -1,5 +1,8 @@
 <template>
     <div class="captain">
+
+
+
         <div class="team-apply" v-for="(item, index) in applyLists" :key="'apply_list-' + index">
             <div class="title">队伍申请</div>
             <div class="content">
@@ -13,12 +16,16 @@
         </div>
 
         <member-list :list="members" @update="getTeamLists" :captain="true"></member-list>
+        <div class="info-x">
+            <p v-if="members.length < 4">你的队伍未达到参与要求，必须满4人或4人以上，才能有参与精弘毅行的要求</p>
+            <p v-else>你的队伍已经达到参与精弘毅行要求，但需等报名结束之后如果你的队伍成功位列前1200支达成要求的队伍才算报名成功报名精弘毅行</p>
+        </div>
 
         <div class="operate">
             <div  v-if="!isLock" class="common-btn team-btn" @click="lockShow = true" >锁定队伍 <div class="tip">锁定队伍可以让队伍不能再报名</div></div>
             <div  v-else class="common-btn team-btn" @click="unlockShow = true">解锁队伍 <div class="tip">解锁队伍可以让队伍继续再报名</div></div>
 
-            <div class="common-btn team-btn" @click="updateTeam">修改队伍信息 <div class="tip">锁定队伍后才能修改队伍信息</div> </div>
+            <div class="common-btn team-btn" @click="updateTeam">修改队伍信息 <div class="tip"></div> </div>
 
             <div class="common-btn team-btn" @click="breakShow = true">解散队伍</div>
         </div>

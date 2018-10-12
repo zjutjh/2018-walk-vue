@@ -82,7 +82,9 @@
         }),
         methods: {
             ...mapMutations([
-                'showToast'
+                'showToast',
+                'showLoading',
+                'hideLoading'
 
             ]),
             isEmpty: function () {
@@ -121,21 +123,25 @@
 
                 this.state = true
                 if (!this.isEmpty()) {
+                    this.state = false
                     return
                 }
 
                 if (!this.verify()) {
+                    this.state = false
                     return
                 }
 
                 if (this.isCreate) {
                     if (this.second_id_card !== this.form.id_card) {
                         show.showToast('身份证号码不一致')
+                        this.state = false
                         return
                     }
                 }
 
 
+                this.showLoading('')
                 let params = {}
 
                 if (this.isCreate) {
@@ -158,11 +164,13 @@
                 if (res.code < 0) {
                     this.showToast(res.msg)
                     this.state = false
+                    this.hideLoading('')
                     return
                 }
-
+                this.hideLoading('')
                 this.showToast({title: res.msg, status: 'success'})
-                this.state = true
+
+                this.state = false
 
                 this.$router.replace('/')
 
@@ -181,6 +189,11 @@
 
                 if (!this.isCreate) {
                     return true
+                }
+
+                if (!/^[0-9]*$/.test(this.form.height)) {
+                    this.showToast('身高必须为数字')
+                    return false
                 }
 
                 if (!/[0-9]{17}([0-9Xx])/.test(this.form.id_card)) {
