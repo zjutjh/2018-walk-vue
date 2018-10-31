@@ -39,6 +39,8 @@
                 if (res.code < 0) {
                     this.showToast(res.msg)
                     this.state = false
+                    this.$router.replace('/')
+                    await this.login(this)
                     return
                 }
                 await this.showToast({title: res.msg, status: 'success'})

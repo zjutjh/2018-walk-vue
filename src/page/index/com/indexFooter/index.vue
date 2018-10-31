@@ -12,7 +12,9 @@
 
         </div>
         <footer>
-            <a href="">点击查看精弘毅行介绍</a>
+            <a href="https://jq.qq.com/?_wv=1027&k=538bunC">点击加入毅行答疑群</a>
+            <a href="https://mp.weixin.qq.com/s?__biz=MzI0MTUzNzQzMg==&mid=2247490125&idx=1&sn=630a35d03bd25f756e00f4b96f89bfe6&chksm=e90b42bade7ccbac16a54bb8df715dd1e7398f87130f186290799ac67ef230759ec7ae8f30e6&mpshare=1&scene=23&srcid=1023k8oaU3aUluIGc58lfklX#rd">点击查看精弘毅行介绍</a>
+
         </footer>
 
     </div>

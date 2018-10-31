@@ -13,7 +13,7 @@
                     <h1>额外信息</h1>
                     <p>姓名 <span>{{ item.name}}</span></p>
                     <p>微信 <span>{{item.wx_id}}</span> </p>
-                    <p>QQ <span>{{ item.qq}}</span></p>
+                    <p>QQ&nbsp;<span>{{ item.qq}}</span></p>
                     <p>身份 <span>{{ item.identity}}</span></p>
 
                     <div class="btn-content" v-if="captain">

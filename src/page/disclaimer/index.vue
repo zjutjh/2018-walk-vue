@@ -34,8 +34,7 @@
         <div class="common-btn dis-btn" @click="show = true">同意本声明</div>
 
         <message :title="'是否同意声明'" @cancel="show = false" :show="show">
-            <h1>确定你已经阅读该《风险告知与免责声明》</h1>
-            <h1>并且同意本声明</h1>
+            <p>确定你已经阅读该《风险告知与免责声明》并且同意本声明</p>
             <div class="btn-content">
                 <div class="btn fail" @click="agree">同意</div>
             </div>

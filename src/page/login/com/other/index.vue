@@ -53,9 +53,10 @@
                 })
 
                 if (res.code < 0) {
+                    this.hideLoading('')
                     this.showToast(res.msg)
                     this.state = false
-                    this.hideLoading('')
+
                     return
                 }
 

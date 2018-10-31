@@ -45,7 +45,9 @@
         }),
         methods: {
             ...mapMutations([
-                'showToast'
+                'showToast',
+                'showLoading',
+                'hideLoading'
             ]),
             getTeamLists: async function() {
                 const res = await this.fetch(this.API('teamMmbers'))
@@ -55,20 +57,31 @@
                 }
                 this.showToast({title: res.msg, status: 'success'})
                 const temp = res.data
-                temp.sort((a, b) => { a.state.state - b.state.state})
+                temp.sort((a, b) => {
+                    if (a.state.state > b.state.state) {
+                        return 1;
+                    } else {
+                        return 0
+                    }
+                })
+                console.log(temp)
                 this.members = temp
             },
             leavelTeam: async function() {
                 if (this.state) {
                     return
                 }
+                this.showLoading('')
                 this.state = true
                 const res = await this.fetch(this.API('leavel'))
                 if (res.code < 0) {
+                    this.hideLoading('')
+                    this.leavelShow = false
                     this.showToast(res.msg)
                     this.state =false
                     return
                 }
+                this.hideLoading('')
                 this.showToast({title: res.msg, status: 'success'})
                 this.state = false
                 this.$router.replace('/')

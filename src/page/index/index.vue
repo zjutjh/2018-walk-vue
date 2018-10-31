@@ -47,8 +47,6 @@
 
         },
         mounted: async function() {
-            console.log(this.token)
-            console.log(this.user)
             if (!this.token || !this.user) {
                 return
             }

@@ -21,10 +21,11 @@
                     <h1>队伍信息</h1>
                     <p>名称 <span>{{item.name}}</span> </p>
                     <p>简介 <span>{{ item.description}}</span></p>
+                    <p>路线 <span>{{ item.select_route}}</span></p>
                     <p>人数 <span>{{ item.members}}/{{ item.num}}</span></p>
 
                     <div class="btn-content">
-                        <div class="btn success" @click="apply(item)">申请</div>
+                        <div class="btn success" @click="apply(item, index)">申请</div>
                     </div>
 
                 </message>
@@ -68,16 +69,19 @@
 
                 return false
             },
-            apply: async function(item) {
+            apply: async function(item, index) {
                 if (this.state) {
                     return
                 }
                 this.state = true
                 if (this.disable(item)) {
+                    this.show.splice(index, 1, false)
+                    this.showToast('该队伍不能申请')
                     this.state = false
                     return
                 }
 
+                this.showLoading('')
                 const params = {
                     groupId: item.id
                 }
@@ -87,17 +91,22 @@
                     method: 'post'
                 })
                 if (res.code < 0) {
+                    this.show.splice(index, 1, false)
+                    this.hideLoading('')
                     this.showToast(res.msg)
                     this.state = false
                     return
                 }
 
+                this.hideLoading('')
                 this.showToast({title: res.msg, status: 'success'})
                 this.state = false
                 this.$router.replace('/')
             },
             ...mapMutations([
-                'showToast'
+                'showToast',
+                'showLoading',
+                'hideLoading'
             ]),
             init: function() {
                 this.show = []

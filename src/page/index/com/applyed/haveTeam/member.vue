@@ -36,7 +36,7 @@
                     this.showToast(res.msg)
                     return
                 }
-                this.showToast(res.msg)
+                this.showToast({title: res.msg, status: 'success'})
                 this.team = res.data
             },
             ...mapMutations([

@@ -17,19 +17,21 @@
                         <option value="6">6</option>
                     </select>
                 </div>
-                <div class="item touch">
-                    <label for="" >出发校区</label>
-                    <select class="h" v-model="form.start_campus">
-                        <option value="屏峰">屏峰</option>
-                        <option value="朝晖">朝晖</option>
-                    </select>
-                </div>
+                <!--<div class="item touch">-->
+                    <!--<label for="" >出发校区</label>-->
+                    <!--<select class="h" v-model="form.start_campus">-->
+                        <!--<option value="屏峰">屏峰</option>-->
+                        <!--<option value="朝晖">朝晖</option>-->
+                    <!--</select>-->
+                <!--</div>-->
                 <div class="item touch">
                     <label for="" >路线选择</label>
                     <select class="h" v-model="form.select_route">
-                        <option value="半程">半程</option>
-                        <option value="全程">全程</option>
+                        <option value="屏峰小和山半程毅行">屏峰小和山半程毅行</option>
+                        <option value="屏峰小和山全程毅行">屏峰小和山全程毅行</option>
+                        <option value="朝晖京杭大运河毅行" v-if="user.campus === '朝晖'">朝晖京杭大运河毅行</option>
                     </select>
+                    <div class="tip">朝晖选择屏峰半程or屏峰全程需要自行前往屏峰校区参加活动</div>
                 </div>
                 <div class="common-btn create-btn" @click="createOrpUpdate">{{ type === 'create' ? '创建队伍' :'更新信息'}}</div>
             </div>
@@ -52,7 +54,7 @@
                 description: '',
                 start_campus: '屏峰',
                 num: '4',
-                select_route: '半程'
+                select_route: '屏峰小和山半程毅行'
 
             },
             type: 'update',
@@ -137,6 +139,12 @@
                 'showLoading',
                 'hideLoading'
             ])
+        },
+        computed: {
+            ...mapState({
+                user: (state) => state.auth.userInfo,
+                token: (state) => state.auth.token
+            })
         }
     }
 </script>
@@ -145,3 +153,4 @@
     @import "style";
 
 </style>
+

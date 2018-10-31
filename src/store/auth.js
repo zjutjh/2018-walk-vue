@@ -87,7 +87,7 @@ export const actions = {
             },
             method: 'POST'
         })
-        if (res.code < 0) {
+        if (res.code < 0) { 你
             context.commit('showToast', '认证失败')
             return
         }

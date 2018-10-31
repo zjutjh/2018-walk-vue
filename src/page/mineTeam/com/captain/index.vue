@@ -25,7 +25,7 @@
             <div  v-if="!isLock" class="common-btn team-btn" @click="lockShow = true" >锁定队伍 <div class="tip">锁定队伍可以让队伍不能再报名</div></div>
             <div  v-else class="common-btn team-btn" @click="unlockShow = true">解锁队伍 <div class="tip">解锁队伍可以让队伍继续再报名</div></div>
 
-            <div class="common-btn team-btn" @click="updateTeam">修改队伍信息 <div class="tip"></div> </div>
+            <div class="common-btn team-btn" @click="updateTeam">修改队伍信息 <div class="tip">只有锁定队伍才能修改信息</div> </div>
 
             <div class="common-btn team-btn" @click="breakShow = true">解散队伍</div>
         </div>
@@ -101,7 +101,14 @@
                 }
                 this.showToast({title: res.msg, status: 'success'})
                 const temp = res.data
-                temp.sort((a, b) => { a.state.state - b.state.state})
+                temp.sort((a, b) => {
+                    if (a.state.state > b.state.state) {
+                        return 1;
+                    } else {
+                        return 0
+                    }
+                })
+                console.log(temp)
                 this.members = temp
             },
             getApplyLists: async function() {
@@ -199,7 +206,7 @@
                 this.isLock = false
             },
             updateTeam: async function() {
-                if (this.isLock) {
+                if (!this.isLock) {
                     this.showToast('你不能修改信息')
                     return
                 }
